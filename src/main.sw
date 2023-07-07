@@ -2,7 +2,7 @@ contract;
 use std::constants::ZERO_B256;
 use std::call_frames::msg_asset_id;
 use std::context::msg_amount;
-use std::storage::storage_vec::StorageVec;
+use std::storage::storage_vec::*;
 
 struct InitParams {
     discount_factor: Option<u64>,
@@ -93,7 +93,6 @@ impl BondingContract for Contract {
         let discount = _calc_discount(market);
         let spark_amount = 0; // todo calculate
         let vesting_time = _calc_vesting_time(market);
-        //❌ Error: No method named "len" found for type "StorageKey<StorageVec<Vesting>>".
         let index = storage.vestings.len();
         let vesting = Vesting {
             owner: msg_sender().unwrap(),
@@ -103,7 +102,6 @@ impl BondingContract for Contract {
             start_timestamp: 0,
         };
  
-        //❌ Error: No method named "push" found for type "StorageKey<StorageVec<Vesting>>".
         storage.vestings.push(vesting);
         _mint_spark(spark_amount);
     }
