@@ -90,13 +90,11 @@ impl BondingContract for Contract {
 
         let spark_price = _get_price(SPARK_ADDRESS);
         let market_asset_price = _get_price(market);
-        // ❌ Compiler error: thread 'main' panicked at 'called `Option::unwrap()` on a `None` value', sway-ir/src/optimize/dce.rs:93:60
-        //              note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
         let discount = _calc_discount(market);
         let spark_amount = 0; // todo calculate
         let vesting_time = _calc_vesting_time(market);
         //❌ Error: No method named "len" found for type "StorageKey<StorageVec<Vesting>>".
-        // let index = storage.vestings.len();
+        let index = storage.vestings.len();
         let vesting = Vesting {
             owner: msg_sender().unwrap(),
             spark_amount,
@@ -106,7 +104,7 @@ impl BondingContract for Contract {
         };
  
         //❌ Error: No method named "push" found for type "StorageKey<StorageVec<Vesting>>".
-        // storage.vestings.push(vesting);
+        storage.vestings.push(vesting);
         _mint_spark(spark_amount);
     }
    
