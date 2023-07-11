@@ -1,0 +1,18 @@
+[package]
+name = "bonding"
+description = "A cargo-generate template for Rust + Sway integration testing."
+version = "0.1.0"
+edition = "2021"
+authors = ["alexey <alexnagornnyy.an@gmail.com>"]
+license = "Apache-2.0"
+
+[dev-dependencies]
+fuels = { version = "0.43", features = ["fuel-core-lib"] }
+tokio = { version = "1.12", features = ["rt", "macros"] }
+# src20_sdk = { git = "https://github.com/compolabs/src-20.git", branch = "forc-v0.43" }
+src20_sdk = { path = "../src-20" }
+
+[[test]]
+harness = true
+name = "integration_tests"
+path = "tests/harness.rs"
