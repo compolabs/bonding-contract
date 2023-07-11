@@ -425,6 +425,8 @@ name = "bonding"
 version = "0.1.0"
 dependencies = [
  "fuels",
+ "serde",
+ "serde_json",
  "src20_sdk",
  "tokio",
 ]
@@ -3265,6 +3267,7 @@ version = "0.0.3"
 dependencies = [
  "dotenv",
  "fuels",
+ "serde",
 ]
 
 [[package]]
